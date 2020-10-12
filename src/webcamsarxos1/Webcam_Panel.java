@@ -23,7 +23,10 @@ public class Webcam_Panel {
     webcam.setViewSize(WebcamResolution.VGA.getSize()); 
     
     WebcamPanel webcampanel = new WebcamPanel(webcam);
-    //webcampanel.setImageSizeDisplayed(true);
+    webcampanel.setImageSizeDisplayed(true);
+    webcampanel.setFPSDisplayed(true);
+    webcampanel.setMirrored(true);
+    webcampanel.setDisplayDebugInfo(true);
     
     JFrame frame1 = new JFrame();
     frame1.add(webcampanel);
