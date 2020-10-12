@@ -30,6 +30,7 @@ public class WebcamGUI extends javax.swing.JFrame {
         webcam = Webcam.getDefault(); 
         webcam.setViewSize(new Dimension(320, 240)); 
         webcam.open(); 
+        bildMonitor.setSize(320, 240);
     }
 
     /**
@@ -58,23 +59,22 @@ public class WebcamGUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(bildMonitor, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(149, 149, 149)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(bildMonitor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(113, 113, 113)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(123, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(bildMonitor, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addComponent(bildMonitor, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
-                .addContainerGap())
+                .addGap(6, 6, 6))
         );
 
         pack();
@@ -129,6 +129,7 @@ public class WebcamGUI extends javax.swing.JFrame {
     
     class VideoFeedTaker extends Thread
     {
+        
 
         @Override
         public void run() {
@@ -138,7 +139,7 @@ public class WebcamGUI extends javax.swing.JFrame {
                 try {
                     Image im = webcam.getImage();
                     bildMonitor.setIcon(new ImageIcon(im)); 
-                    Thread.sleep(50);
+                    Thread.sleep(10); 
                 } catch (InterruptedException ex) {
                     Logger.getLogger(WebcamGUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
